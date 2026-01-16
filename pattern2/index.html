@@ -651,6 +651,39 @@
       margin-top: 0.25rem;
     }
 
+    /* Works (納入実績) */
+    .works {
+      background: var(--dark);
+      padding: 6rem 2rem;
+    }
+
+    .works-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .works-item {
+      background: var(--dark-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--text);
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .works-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
     /* CTA */
     .cta {
       padding: 6rem 2rem;
@@ -798,6 +831,10 @@
         max-width: 500px;
       }
 
+      .works-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
       .murmur-grid {
         grid-template-columns: 1fr;
       }
@@ -933,6 +970,20 @@
 
       .spec-label {
         font-size: 0.625rem;
+      }
+
+      .works {
+        padding: 3rem 1rem;
+      }
+
+      .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+
+      .works-item {
+        padding: 0.75rem;
+        font-size: 0.75rem;
       }
 
       .murmur {
@@ -1093,8 +1144,8 @@
         </h1>
         <p>アルミ製軽量機材で運送業界に革命を。ドライバーの負担を軽減し、物流効率を最大化する。</p>
         <div class="hero-buttons">
-          <a href="#" class="btn">製品を見る</a>
-          <a href="#" class="btn btn-outline">会社概要</a>
+          <a href="#products" class="btn">製品を見る</a>
+          <a href="#about" class="btn btn-outline">会社概要</a>
         </div>
       </div>
       <div class="hero-image"></div>
@@ -1229,6 +1280,38 @@
     </div>
   </section>
 
+  <section class="works" id="works">
+    <div class="works-inner">
+      <div class="section-header">
+        <span class="section-label">Works</span>
+        <h2>納入実績</h2>
+        <p>アルミスタンション導入企業様</p>
+      </div>
+      <div class="works-grid">
+        <div class="works-item">株式会社NSロジ東日本 東京支店様</div>
+        <div class="works-item">株式会社NSロジ西日本 下関支店様</div>
+        <div class="works-item">株式会社NSロジ西日本 八幡支店様</div>
+        <div class="works-item">大阪旭陸運株式会社 市川営業所様</div>
+        <div class="works-item">光陽運輸株式会社様</div>
+        <div class="works-item">小平産業株式会社様</div>
+        <div class="works-item">鈴与自動車運送株式会社 豊橋営業所様</div>
+        <div class="works-item">東鉄運輸株式会社 宇都宮営業所様</div>
+        <div class="works-item">東邦車輛株式会社様</div>
+        <div class="works-item">株式会社中村運送様</div>
+        <div class="works-item">日鉄物流八幡株式会社様</div>
+        <div class="works-item">日本通運株式会社 名古屋営業所様</div>
+        <div class="works-item">服部鋼運株式会社様</div>
+        <div class="works-item">株式会社花見台自動車様</div>
+        <div class="works-item">広島ボデーパーツ株式会社様</div>
+        <div class="works-item">ワーレックス株式会社 東松山営業所様</div>
+        <div class="works-item">ワーレックス株式会社 安城営業所様</div>
+        <div class="works-item">ワーレックス株式会社 大和営業所様</div>
+        <div class="works-item">ワーレックス株式会社 岡崎営業所様</div>
+        <div class="works-item">ワーレックス株式会社 岐阜営業所様</div>
+      </div>
+    </div>
+  </section>
+
   <section class="ceo-message" id="message">
     <div class="ceo-message-inner">
       <div class="section-header">
@@ -1284,8 +1367,8 @@
         <div class="footer-title">Company</div>
         <ul class="footer-links">
           <li><a href="#about">会社概要</a></li>
+          <li><a href="#works">納入実績</a></li>
           <li><a href="#message">代表挨拶</a></li>
-          <li><a href="#murmur">代表の徒然</a></li>
         </ul>
       </div>
       <div>

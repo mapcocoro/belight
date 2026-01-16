@@ -523,6 +523,44 @@
       margin-top: 0.375rem;
     }
 
+    /* Works (納入実績) */
+    .works {
+      padding: 6rem 2rem;
+      background: var(--bg);
+    }
+
+    .works-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .works-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 3rem;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .works-item {
+      background: var(--bg-light);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--text);
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .works-item:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
     /* CEO Voice Section */
     .ceo-voice {
       background: var(--bg-light);
@@ -780,6 +818,14 @@
         padding: 5rem 2rem;
       }
 
+      .works {
+        padding: 5rem 2rem;
+      }
+
+      .works-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
       .ceo-voice {
         padding: 5rem 2rem;
       }
@@ -902,6 +948,25 @@
       .product-spec {
         font-size: 0.6875rem;
         margin-top: 0.75rem;
+      }
+
+      .works {
+        padding: 4rem 1rem;
+      }
+
+      .works-subtitle {
+        font-size: 0.875rem;
+        margin-bottom: 2rem;
+      }
+
+      .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+
+      .works-item {
+        padding: 0.75rem;
+        font-size: 0.75rem;
       }
 
       .murmur {
@@ -1172,6 +1237,38 @@
     </div>
   </section>
 
+  <section class="works" id="works">
+    <div class="works-inner">
+      <div class="section-header">
+        <p class="section-label">Works</p>
+        <h2 class="section-title">納入実績</h2>
+      </div>
+      <p class="works-subtitle">アルミスタンション導入企業様</p>
+      <div class="works-grid">
+        <div class="works-item">株式会社NSロジ東日本 東京支店様</div>
+        <div class="works-item">株式会社NSロジ西日本 下関支店様</div>
+        <div class="works-item">株式会社NSロジ西日本 八幡支店様</div>
+        <div class="works-item">大阪旭陸運株式会社 市川営業所様</div>
+        <div class="works-item">光陽運輸株式会社様</div>
+        <div class="works-item">小平産業株式会社様</div>
+        <div class="works-item">鈴与自動車運送株式会社 豊橋営業所様</div>
+        <div class="works-item">東鉄運輸株式会社 宇都宮営業所様</div>
+        <div class="works-item">東邦車輛株式会社様</div>
+        <div class="works-item">株式会社中村運送様</div>
+        <div class="works-item">日鉄物流八幡株式会社様</div>
+        <div class="works-item">日本通運株式会社 名古屋営業所様</div>
+        <div class="works-item">服部鋼運株式会社様</div>
+        <div class="works-item">株式会社花見台自動車様</div>
+        <div class="works-item">広島ボデーパーツ株式会社様</div>
+        <div class="works-item">ワーレックス株式会社 東松山営業所様</div>
+        <div class="works-item">ワーレックス株式会社 安城営業所様</div>
+        <div class="works-item">ワーレックス株式会社 大和営業所様</div>
+        <div class="works-item">ワーレックス株式会社 岡崎営業所様</div>
+        <div class="works-item">ワーレックス株式会社 岐阜営業所様</div>
+      </div>
+    </div>
+  </section>
+
   <section class="full-image full-image-2">
     <div class="full-image-bg"></div>
     <div class="full-image-overlay"></div>
@@ -1236,8 +1333,8 @@
         <div class="footer-title">Company</div>
         <ul class="footer-links">
           <li><a href="#about">会社概要</a></li>
+          <li><a href="#works">納入実績</a></li>
           <li><a href="#message">代表挨拶</a></li>
-          <li><a href="#journal">代表の徒然</a></li>
         </ul>
       </div>
       <div>
