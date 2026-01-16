@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ビーライト | Pattern 2 - Bold Industrial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #f97316;
+      --primary-dark: #ea580c;
+      --accent: #fbbf24;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background: var(--dark);
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: var(--primary);
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+      clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      clip-path: none;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--dark);
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      z-index: 200;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--dark);
+      z-index: 150;
+      padding: 5rem 2rem 2rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .mobile-menu .btn {
+      margin-top: 1rem;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--dark-light) 0%, transparent 100%);
+      clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .hero-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-label {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--dark);
+      padding: 0.25rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 .highlight {
+      color: var(--primary);
+      display: block;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .hero-image {
+      background: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80') center/cover no-repeat;
+      border: 2px solid var(--border);
+      aspect-ratio: 4/3;
+      position: relative;
+    }
+
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: 10px;
+      bottom: 10px;
+      border: 2px solid var(--primary);
+      z-index: -1;
+    }
+
+    /* Stats */
+    .stats {
+      background: var(--dark-light);
+      padding: 4rem 2rem;
+      border-top: 4px solid var(--primary);
+      border-bottom: 4px solid var(--primary);
+    }
+
+    .stats-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      border-left: 2px solid var(--border);
+    }
+
+    .stat-item:first-child {
+      border-left: none;
+    }
+
+    .stat-number {
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .stat-unit {
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      margin-top: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Section */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    /* Products */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--dark-light);
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+      transform: scaleY(0);
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+
+    .product-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .product-image {
+      aspect-ratio: 16/10;
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .product-image-1 { background-image: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80'); }
+    .product-image-2 { background-image: url('https://plus.unsplash.com/premium_photo-1668774067099-8c8fee6c9736?w=600&q=80'); }
+    .product-image-3 { background-image: url('https://plus.unsplash.com/premium_photo-1668535612734-22813711ca2d?w=600&q=80'); }
+
+    .product-content {
+      padding: 1.5rem;
+    }
+
+    .product-content h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .product-content p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .product-specs {
+      display: flex;
+      gap: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .spec {
+      font-size: 0.75rem;
+    }
+
+    .spec-value {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .spec-label {
+      color: var(--text-muted);
+    }
+
+    /* Murmur - Twitter Style (Dark Theme) */
+    .murmur {
+      background: var(--dark);
+      padding: 6rem 2rem;
+    }
+
+    .murmur-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .murmur .section-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .murmur .section-header h2 {
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+
+    .murmur .section-header p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+
+    .tweet-feed {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tweet {
+      background: var(--dark-light);
+      border: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+      display: flex;
+      gap: 0.75rem;
+      transition: background-color 0.2s;
+    }
+
+    .tweet:first-child {
+      border-radius: 12px 12px 0 0;
+    }
+
+    .tweet:last-child {
+      border-radius: 0 0 12px 12px;
+    }
+
+    .tweet:not(:last-child) {
+      border-bottom: none;
+    }
+
+    .tweet:hover {
+      background: var(--dark);
+    }
+
+    .tweet-avatar {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tweet-avatar svg {
+      width: 28px;
+      height: 28px;
+      fill: var(--dark);
+    }
+
+    .tweet-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .tweet-header {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+
+    .tweet-name {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.9375rem;
+    }
+
+    .tweet-time {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+
+    .tweet-time::before {
+      content: "·";
+      margin: 0 0.25rem;
+    }
+
+    .tweet-text {
+      color: var(--text);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      margin-top: 0.25rem;
+    }
+
+    /* CEO Message Section */
+    .ceo-message {
+      padding: 6rem 2rem;
+      background: var(--dark-light);
+    }
+
+    .ceo-message-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .ceo-message .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .ceo-message .section-header h2 {
+      font-size: 2rem;
+      color: var(--text);
+    }
+
+    .ceo-message .section-header p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+
+    .message-content {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .message-photo {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+      border-radius: 12px;
+      aspect-ratio: 3/4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      border: 2px dashed var(--border);
+    }
+
+    .message-photo svg {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    .message-photo span {
+      font-size: 0.875rem;
+    }
+
+    .message-text {
+      background: var(--dark);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .message-text h3 {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .message-text p {
+      color: var(--text);
+      line-height: 2;
+      margin-bottom: 1rem;
+    }
+
+    .message-text p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .message-signature {
+      text-align: right;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .message-signature .company {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .message-signature .name {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 0.25rem;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 6rem 2rem;
+      background: var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: var(--primary-dark);
+      clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .cta-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--dark);
+    }
+
+    .cta p {
+      color: var(--dark);
+      opacity: 0.8;
+    }
+
+    .cta .btn {
+      background: var(--dark);
+      color: var(--text);
+    }
+
+    .cta .btn:hover {
+      background: var(--dark-light);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .footer-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .hero-image {
+        max-width: 500px;
+      }
+
+      .stats-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-item {
+        border-left: none;
+        border-top: 2px solid var(--border);
+      }
+
+      .stat-item:nth-child(-n+2) {
+        border-top: none;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+      }
+
+      .murmur-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .murmur-profile {
+        position: static;
+      }
+
+      .cta-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        font-size: 15px;
+      }
+
+      .header-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+      }
+
+      .logo {
+        font-size: 1.25rem;
+      }
+
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+      }
+
+      nav, .header-inner > .btn {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero {
+        padding: 5rem 1rem 3rem;
+        min-height: auto;
+      }
+
+      .hero-label {
+        font-size: 0.625rem;
+        padding: 0.25rem 0.75rem;
+      }
+
+      .hero h1 {
+        font-size: 1.75rem;
+        line-height: 1.3;
+      }
+
+      .hero p {
+        font-size: 0.9375rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .hero-image {
+        margin-top: 2rem;
+      }
+
+      .hero-image::before {
+        display: none;
+      }
+
+      .stats {
+        padding: 2.5rem 1rem;
+      }
+
+      .stat-item {
+        padding: 1rem;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      .stat-unit {
+        font-size: 1rem;
+      }
+
+      .stat-label {
+        font-size: 0.6875rem;
+      }
+
+      .section {
+        padding: 3rem 1rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.5rem;
+      }
+
+      .section-label {
+        font-size: 0.625rem;
+      }
+
+      .product-content {
+        padding: 1rem;
+      }
+
+      .product-content h3 {
+        font-size: 1.0625rem;
+      }
+
+      .product-content p {
+        font-size: 0.8125rem;
+      }
+
+      .product-specs {
+        gap: 1rem;
+        padding-top: 0.75rem;
+      }
+
+      .spec-value {
+        font-size: 0.875rem;
+      }
+
+      .spec-label {
+        font-size: 0.625rem;
+      }
+
+      .murmur {
+        padding: 3rem 1rem;
+      }
+
+      .tweet {
+        padding: 0.875rem 1rem;
+      }
+
+      .tweet-avatar {
+        width: 40px;
+        height: 40px;
+      }
+
+      .tweet-avatar svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .tweet-name {
+        font-size: 0.875rem;
+      }
+
+      .tweet-time {
+        font-size: 0.8125rem;
+      }
+
+      .tweet-text {
+        font-size: 0.875rem;
+      }
+
+      .ceo-message {
+        padding: 3rem 1rem;
+      }
+
+      .message-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .message-photo {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+
+      .message-text {
+        padding: 1.5rem;
+      }
+
+      .message-text h3 {
+        font-size: 1.125rem;
+      }
+
+      .message-text p {
+        font-size: 0.9375rem;
+        line-height: 1.8;
+      }
+
+      .cta {
+        padding: 3rem 1rem;
+      }
+
+      .cta h2 {
+        font-size: 1.5rem;
+      }
+
+      .cta p {
+        font-size: 0.875rem;
+      }
+
+      footer {
+        padding: 2.5rem 1rem 1.5rem;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .footer-brand {
+        font-size: 1.125rem;
+      }
+
+      .footer-desc {
+        font-size: 0.8125rem;
+      }
+
+      .footer-title {
+        font-size: 0.6875rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer-links a,
+      .footer-links li {
+        font-size: 0.8125rem;
+      }
+
+      .footer-bottom {
+        font-size: 0.6875rem;
+        margin-top: 2rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+
+      .stat-number {
+        font-size: 1.75rem;
+      }
+
+      nav a {
+        font-size: 0.625rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">B</span>
+        BE LIGHT
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#about">Company</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#murmur">Blog</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn">Contact Us</a>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu">
+    <a href="#about">Company</a>
+    <a href="#products">Products</a>
+    <a href="#murmur">Blog</a>
+    <a href="#contact" class="btn">Contact Us</a>
+  </div>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <span class="hero-label">Since 2019</span>
+        <h1>
+          LIGHTER IS
+          <span class="highlight">STRONGER.</span>
+        </h1>
+        <p>アルミ製軽量機材で運送業界に革命を。ドライバーの負担を軽減し、物流効率を最大化する。</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn">製品を見る</a>
+          <a href="#" class="btn btn-outline">会社概要</a>
+        </div>
+      </div>
+      <div class="hero-image"></div>
+    </div>
+  </section>
+
+  <section class="murmur" id="murmur">
+    <div class="murmur-inner">
+      <div class="section-header">
+        <h2>代表の徒然</h2>
+        <p>重さを減らす人の頭の中</p>
+      </div>
+      <div class="tweet-feed">
+        <article class="tweet">
+          <div class="tweet-avatar">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg>
+          </div>
+          <div class="tweet-body">
+            <div class="tweet-header">
+              <span class="tweet-name">代表のつぶやき</span>
+              <span class="tweet-time">1月10日</span>
+            </div>
+            <p class="tweet-text">「軽いは正義」—これが私たちの信念です。アルミ製機材で、ドライバーの皆様の負担を少しでも軽くしたい。高齢者や女性ドライバーが増える今、軽量化は業界の必須課題です。</p>
+          </div>
+        </article>
+        <article class="tweet">
+          <div class="tweet-avatar">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg>
+          </div>
+          <div class="tweet-body">
+            <div class="tweet-header">
+              <span class="tweet-name">代表のつぶやき</span>
+              <span class="tweet-time">1月5日</span>
+            </div>
+            <p class="tweet-text">労働災害の約3割が腰痛関連。重い機材の上げ下ろしが原因の一つです。スタンション1本で約10kg軽量化。この差が、10年後の体を守ります。安全は軽さから。</p>
+          </div>
+        </article>
+        <article class="tweet">
+          <div class="tweet-avatar">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg>
+          </div>
+          <div class="tweet-body">
+            <div class="tweet-header">
+              <span class="tweet-name">代表のつぶやき</span>
+              <span class="tweet-time">12月28日</span>
+            </div>
+            <p class="tweet-text">CO2削減は物流業界の永遠のテーマ。機材を軽くすれば、燃費が良くなる。微力ながら、地球環境にも貢献できる製品づくりを続けていきます。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats" id="about">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-number">1/3<span class="stat-unit"></span></div>
+        <div class="stat-label">vs Steel Weight</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">2<span class="stat-unit">t</span></div>
+        <div class="stat-label">Load Capacity</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">2019<span class="stat-unit">〜</span></div>
+        <div class="stat-label">Established</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">0</div>
+        <div class="stat-label">Rust Problems</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="section-header">
+      <span class="section-label">Products</span>
+      <h2>製品ラインナップ</h2>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-image product-image-1"></div>
+        <div class="product-content">
+          <h3>アルミスタンション</h3>
+          <p>鋼材17kg→アルミ7.7kg。磁石クレーンに吸着せず、赤錆も発生しません。</p>
+          <div class="product-specs">
+            <div class="spec">
+              <div class="spec-value">7.7kg</div>
+              <div class="spec-label">重量</div>
+            </div>
+            <div class="spec">
+              <div class="spec-value">2t/本</div>
+              <div class="spec-label">耐荷重</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image product-image-2"></div>
+        <div class="product-content">
+          <h3>アルミパレット</h3>
+          <p>ゴミが発生しにくく衛生的。食品・自動車部品の現場に最適。カスタム形状対応。</p>
+          <div class="product-specs">
+            <div class="spec">
+              <div class="spec-value">衛生的</div>
+              <div class="spec-label">食品対応</div>
+            </div>
+            <div class="spec">
+              <div class="spec-value">Custom</div>
+              <div class="spec-label">形状</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-image product-image-3"></div>
+        <div class="product-content">
+          <h3>アルミラック</h3>
+          <p>静電気が発生せず引火の心配なし。水素ボンベラック『ハイドロびんご』納入実績。</p>
+          <div class="product-specs">
+            <div class="spec">
+              <div class="spec-value">No静電気</div>
+              <div class="spec-label">安全性</div>
+            </div>
+            <div class="spec">
+              <div class="spec-value">H2対応</div>
+              <div class="spec-label">実績</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ceo-message" id="message">
+    <div class="ceo-message-inner">
+      <div class="section-header">
+        <span class="section-label">Message</span>
+        <h2>代表挨拶</h2>
+        <p>Message from CEO</p>
+      </div>
+      <div class="message-content">
+        <div class="message-photo">
+          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg>
+          <span>代表者写真</span>
+        </div>
+        <div class="message-text">
+          <h3>ご挨拶</h3>
+          <p>当社は、トラック・トレーラーでの物流の効率化や安全面の向上を目的とした軽量機材、軽量機器の開発・製造・販売に特化した会社です。</p>
+          <p>輸送業界の働き方改革と環境貢献の一環として、運搬物の軽量化は必須の課題だと考えております。輸送する機材、機器を軽量化することで、物流の担い手である運転手様の労働負担の軽減、労働事故の減少も実現できると確信しています。</p>
+          <p>又、トラック・トレーラーでの輸送においてCO2の排出削減は、永遠のテーマとなっています。当然のことながら、貨物以外の付帯機材、付帯機器の軽量化は微量ではありますが、CO2の排出を減少させることができます。</p>
+          <p>当社は、少しでも働き方改革、環境貢献の、お役に立てる製品の開発・提供を行いたいと思っています。</p>
+          <div class="message-signature">
+            <div class="company">合同会社ビーライト 代表社員</div>
+            <div class="name">明石 修</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="cta-inner">
+      <div>
+        <h2>軽量化で、未来を変える。</h2>
+        <p>製品のお見積もり・カスタマイズのご相談を承ります</p>
+      </div>
+      <a href="#" class="btn">お問い合わせ →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">BE LIGHT</div>
+        <p class="footer-desc">お取引先様のご要望に迅速かつ的確にお応えし、御使用される皆様から信頼される製品を提供します。</p>
+      </div>
+      <div>
+        <div class="footer-title">Products</div>
+        <ul class="footer-links">
+          <li><a href="#">アルミスタンション</a></li>
+          <li><a href="#">アルミパレット</a></li>
+          <li><a href="#">アルミラック</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#">会社概要</a></li>
+          <li><a href="#">経営理念</a></li>
+          <li><a href="#">代表挨拶</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Contact</div>
+        <ul class="footer-links">
+          <li>TEL: 0476-45-8099</li>
+          <li>akashi@be-light.jp</li>
+          <li>千葉県印西市西の原3-9-2-311</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 合同会社ビーライト All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.hamburger').classList.toggle('active');
+      document.querySelector('.mobile-menu').classList.toggle('active');
+      document.body.style.overflow = document.querySelector('.mobile-menu').classList.contains('active') ? 'hidden' : '';
+    }
+  </script>
+</body>
+</html>
