@@ -24,6 +24,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Noto Sans JP', sans-serif;
       color: var(--text);
@@ -500,6 +504,61 @@
       margin-top: 0.25rem;
     }
 
+    /* Works (納入実績) */
+    .works {
+      background: var(--bg-gray);
+      padding: 6rem 2rem;
+    }
+
+    .works-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .works-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--text);
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .works-item:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 1024px) {
+      .works-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .works {
+        padding: 3rem 1rem;
+      }
+
+      .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+
+      .works-item {
+        padding: 0.75rem;
+        font-size: 0.75rem;
+      }
+    }
+
     /* CTA */
     .cta {
       padding: 6rem 2rem;
@@ -811,7 +870,8 @@
         <ul>
           <li><a href="#about">会社概要</a></li>
           <li><a href="#products">製品紹介</a></li>
-          <li><a href="#murmur">社長の独り言</a></li>
+          <li><a href="#works">納入実績</a></li>
+          <li><a href="#murmur">代表の徒然</a></li>
         </ul>
       </nav>
       <a href="#contact" class="btn">お問い合わせ</a>
@@ -824,10 +884,11 @@
   </header>
 
   <div class="mobile-menu">
-    <a href="#about">会社概要</a>
-    <a href="#products">製品紹介</a>
-    <a href="#murmur">社長の独り言</a>
-    <a href="#contact" class="btn">お問い合わせ</a>
+    <a href="#about" onclick="toggleMenu()">会社概要</a>
+    <a href="#products" onclick="toggleMenu()">製品紹介</a>
+    <a href="#works" onclick="toggleMenu()">納入実績</a>
+    <a href="#murmur" onclick="toggleMenu()">代表の徒然</a>
+    <a href="#contact" class="btn" onclick="toggleMenu()">お問い合わせ</a>
   </div>
 
   <section class="hero">
@@ -937,6 +998,37 @@
     </div>
   </section>
 
+  <section class="works" id="works">
+    <div class="works-inner">
+      <div class="section-header">
+        <h2>納入実績</h2>
+        <p>アルミスタンション導入企業様</p>
+      </div>
+      <div class="works-grid">
+        <div class="works-item">株式会社NSロジ東日本 東京支店様</div>
+        <div class="works-item">株式会社NSロジ西日本 下関支店様</div>
+        <div class="works-item">株式会社NSロジ西日本 八幡支店様</div>
+        <div class="works-item">大阪旭陸運株式会社 市川営業所様</div>
+        <div class="works-item">光陽運輸株式会社様</div>
+        <div class="works-item">小平産業株式会社様</div>
+        <div class="works-item">鈴与自動車運送株式会社 豊橋営業所様</div>
+        <div class="works-item">東鉄運輸株式会社 宇都宮営業所様</div>
+        <div class="works-item">東邦車輛株式会社様</div>
+        <div class="works-item">株式会社中村運送様</div>
+        <div class="works-item">日鉄物流八幡株式会社様</div>
+        <div class="works-item">日本通運株式会社 名古屋営業所様</div>
+        <div class="works-item">服部鋼運株式会社様</div>
+        <div class="works-item">株式会社花見台自動車様</div>
+        <div class="works-item">広島ボデーパーツ株式会社様</div>
+        <div class="works-item">ワーレックス株式会社 東松山営業所様</div>
+        <div class="works-item">ワーレックス株式会社 安城営業所様</div>
+        <div class="works-item">ワーレックス株式会社 大和営業所様</div>
+        <div class="works-item">ワーレックス株式会社 岡崎営業所様</div>
+        <div class="works-item">ワーレックス株式会社 岐阜営業所様</div>
+      </div>
+    </div>
+  </section>
+
   <section class="ceo-message" id="message">
     <div class="ceo-message-inner">
       <div class="section-header">
@@ -978,17 +1070,17 @@
       <div>
         <div class="footer-title">製品</div>
         <ul class="footer-links">
-          <li><a href="#">アルミスタンション</a></li>
-          <li><a href="#">アルミパレット</a></li>
-          <li><a href="#">アルミラック</a></li>
+          <li><a href="#products">アルミスタンション</a></li>
+          <li><a href="#products">アルミパレット</a></li>
+          <li><a href="#products">アルミラック</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-title">会社情報</div>
         <ul class="footer-links">
-          <li><a href="#">会社概要</a></li>
-          <li><a href="#">経営理念</a></li>
-          <li><a href="#">代表挨拶</a></li>
+          <li><a href="#about">会社概要</a></li>
+          <li><a href="#message">代表挨拶</a></li>
+          <li><a href="#works">納入実績</a></li>
         </ul>
       </div>
       <div>
