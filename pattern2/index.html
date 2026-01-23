@@ -441,113 +441,184 @@
       color: var(--text-muted);
     }
 
-    /* Murmur - Twitter Style (Dark Theme) */
+    /* Murmur - Bold Quote Style */
     .murmur {
-      background: var(--dark);
-      padding: 6rem 2rem;
+      background: var(--dark-light);
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .murmur::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
     }
 
     .murmur-inner {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
     .murmur .section-header {
-      text-align: center;
       margin-bottom: 2rem;
+    }
+
+    .murmur .section-label {
+      display: inline-block;
+      color: var(--primary);
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.375rem;
     }
 
     .murmur .section-header h2 {
       font-size: 1.5rem;
+      font-weight: 900;
       color: var(--text);
     }
 
-    .murmur .section-header p {
-      color: var(--text-muted);
-      font-size: 0.875rem;
-      margin-top: 0.5rem;
+    .quote-container {
+      position: relative;
     }
 
-    .tweet-feed {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .tweet {
-      background: var(--dark-light);
-      border: 1px solid var(--border);
-      padding: 1rem 1.25rem;
-      display: flex;
-      gap: 0.75rem;
-      transition: background-color 0.2s;
-    }
-
-    .tweet:first-child {
-      border-radius: 12px 12px 0 0;
-    }
-
-    .tweet:last-child {
-      border-radius: 0 0 12px 12px;
-    }
-
-    .tweet:not(:last-child) {
-      border-bottom: none;
-    }
-
-    .tweet:hover {
+    .quote-item {
+      display: none;
       background: var(--dark);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      position: relative;
     }
 
-    .tweet-avatar {
-      flex-shrink: 0;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    .quote-item.active {
+      display: block;
+    }
+
+    .quote-item::before {
+      content: '"';
+      position: absolute;
+      top: 0.75rem;
+      left: 1rem;
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--primary);
+      opacity: 0.25;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .quote-text {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+      padding-left: 0.875rem;
+      border-left: 3px solid var(--primary);
+    }
+
+    .quote-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .quote-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .quote-avatar {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .tweet-avatar svg {
-      width: 28px;
-      height: 28px;
+    .quote-avatar svg {
+      width: 22px;
+      height: 22px;
       fill: var(--dark);
     }
 
-    .tweet-body {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .tweet-header {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      flex-wrap: wrap;
-    }
-
-    .tweet-name {
+    .quote-author-info .name {
       font-weight: 700;
       color: var(--text);
-      font-size: 0.9375rem;
+      font-size: 0.875rem;
     }
 
-    .tweet-time {
+    .quote-author-info .date {
       color: var(--text-muted);
-      font-size: 0.9375rem;
+      font-size: 0.75rem;
+      margin-top: 0.125rem;
     }
 
-    .tweet-time::before {
-      content: "·";
-      margin: 0 0.25rem;
+    .quote-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
 
-    .tweet-text {
-      color: var(--text);
-      font-size: 0.9375rem;
-      line-height: 1.5;
-      margin-top: 0.25rem;
+    .quote-dots {
+      display: flex;
+      gap: 0.375rem;
+    }
+
+    .quote-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--border);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .quote-dot.active {
+      background: var(--primary);
+      width: 20px;
+    }
+
+    .quote-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .quote-more-btn:hover {
+      background: var(--primary);
+      color: var(--dark);
+    }
+
+    .quote-more-btn svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.3s;
+    }
+
+    .quote-more-btn:hover svg {
+      transform: translateX(4px);
     }
 
     /* CEO Message Section */
@@ -992,30 +1063,59 @@
         padding: 3rem 1rem;
       }
 
-      .tweet {
-        padding: 0.875rem 1rem;
+      .murmur .section-header h2 {
+        font-size: 1.25rem;
       }
 
-      .tweet-avatar {
-        width: 40px;
-        height: 40px;
+      .quote-item {
+        padding: 1.5rem 1.25rem;
       }
 
-      .tweet-avatar svg {
-        width: 24px;
-        height: 24px;
+      .quote-item::before {
+        font-size: 3rem;
+        top: 0.5rem;
+        left: 0.75rem;
       }
 
-      .tweet-name {
-        font-size: 0.875rem;
+      .quote-text {
+        font-size: 0.9375rem;
+        padding-left: 0.625rem;
+        border-left-width: 2px;
+        margin-bottom: 1rem;
       }
 
-      .tweet-time {
+      .quote-meta {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+
+      .quote-avatar {
+        width: 36px;
+        height: 36px;
+      }
+
+      .quote-avatar svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .quote-author-info .name {
         font-size: 0.8125rem;
       }
 
-      .tweet-text {
-        font-size: 0.875rem;
+      .quote-author-info .date {
+        font-size: 0.6875rem;
+      }
+
+      .quote-nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .quote-more-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.6875rem;
       }
 
       .ceo-message {
@@ -1159,44 +1259,83 @@
   <section class="murmur" id="murmur">
     <div class="murmur-inner">
       <div class="section-header">
-        <h2>代表のつぶやき</h2>
-        <p>重さを減らす人の頭の中</p>
+        <span class="section-label">Voice</span>
+        <h2>代表の声</h2>
       </div>
-      <div class="tweet-feed">
-        <article class="tweet">
-          <div class="tweet-avatar">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg>
-          </div>
-          <div class="tweet-body">
-            <div class="tweet-header">
-              <span class="tweet-name">代表：明石 修</span>
-              <span class="tweet-time">1月10日</span>
+      <div class="quote-container">
+        <article class="quote-item active" data-index="0">
+          <p class="quote-text">軽いは正義—これが私たちの信念です。アルミ製機材で、ドライバーの皆様の負担を少しでも軽くしたい。高齢者や女性ドライバーが増える今、軽量化は業界の必須課題です。</p>
+          <div class="quote-meta">
+            <div class="quote-author">
+              <div class="quote-avatar">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg>
+              </div>
+              <div class="quote-author-info">
+                <div class="name">明石 修</div>
+                <div class="date">代表社員 / 2025.1.10</div>
+              </div>
             </div>
-            <p class="tweet-text">「軽いは正義」—これが私たちの信念です。アルミ製機材で、ドライバーの皆様の負担を少しでも軽くしたい。高齢者や女性ドライバーが増える今、軽量化は業界の必須課題です。</p>
+            <div class="quote-nav">
+              <div class="quote-dots">
+                <span class="quote-dot active" data-index="0"></span>
+                <span class="quote-dot" data-index="1"></span>
+                <span class="quote-dot" data-index="2"></span>
+              </div>
+              <button class="quote-more-btn" onclick="nextQuote()">
+                Next
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
           </div>
         </article>
-        <article class="tweet">
-          <div class="tweet-avatar">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg>
-          </div>
-          <div class="tweet-body">
-            <div class="tweet-header">
-              <span class="tweet-name">代表：明石 修</span>
-              <span class="tweet-time">1月5日</span>
+        <article class="quote-item" data-index="1">
+          <p class="quote-text">労働災害の約3割が腰痛関連。重い機材の上げ下ろしが原因の一つです。スタンション1本で約10kg軽量化。この差が、10年後の体を守ります。</p>
+          <div class="quote-meta">
+            <div class="quote-author">
+              <div class="quote-avatar">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg>
+              </div>
+              <div class="quote-author-info">
+                <div class="name">明石 修</div>
+                <div class="date">代表社員 / 2025.1.5</div>
+              </div>
             </div>
-            <p class="tweet-text">労働災害の約3割が腰痛関連。重い機材の上げ下ろしが原因の一つです。スタンション1本で約10kg軽量化。この差が、10年後の体を守ります。安全は軽さから。</p>
+            <div class="quote-nav">
+              <div class="quote-dots">
+                <span class="quote-dot" data-index="0"></span>
+                <span class="quote-dot active" data-index="1"></span>
+                <span class="quote-dot" data-index="2"></span>
+              </div>
+              <button class="quote-more-btn" onclick="nextQuote()">
+                Next
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
           </div>
         </article>
-        <article class="tweet">
-          <div class="tweet-avatar">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg>
-          </div>
-          <div class="tweet-body">
-            <div class="tweet-header">
-              <span class="tweet-name">代表：明石 修</span>
-              <span class="tweet-time">12月28日</span>
+        <article class="quote-item" data-index="2">
+          <p class="quote-text">CO2削減は物流業界の永遠のテーマ。機材を軽くすれば、燃費が良くなる。微力ながら、地球環境にも貢献できる製品づくりを続けていきます。</p>
+          <div class="quote-meta">
+            <div class="quote-author">
+              <div class="quote-avatar">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg>
+              </div>
+              <div class="quote-author-info">
+                <div class="name">明石 修</div>
+                <div class="date">代表社員 / 2024.12.28</div>
+              </div>
             </div>
-            <p class="tweet-text">CO2削減は物流業界の永遠のテーマ。機材を軽くすれば、燃費が良くなる。微力ながら、地球環境にも貢献できる製品づくりを続けていきます。</p>
+            <div class="quote-nav">
+              <div class="quote-dots">
+                <span class="quote-dot" data-index="0"></span>
+                <span class="quote-dot" data-index="1"></span>
+                <span class="quote-dot active" data-index="2"></span>
+              </div>
+              <button class="quote-more-btn" onclick="nextQuote()">
+                Next
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
           </div>
         </article>
       </div>
@@ -1395,6 +1534,32 @@
       document.querySelector('.mobile-menu').classList.toggle('active');
       document.body.style.overflow = document.querySelector('.mobile-menu').classList.contains('active') ? 'hidden' : '';
     }
+
+    // Quote slider
+    let currentQuote = 0;
+    const quotes = document.querySelectorAll('.quote-item');
+    const dots = document.querySelectorAll('.quote-dot');
+
+    function showQuote(index) {
+      quotes.forEach((q, i) => {
+        q.classList.remove('active');
+        q.querySelectorAll('.quote-dot').forEach(d => d.classList.remove('active'));
+      });
+      quotes[index].classList.add('active');
+      document.querySelectorAll('.quote-dot[data-index="' + index + '"]').forEach(d => d.classList.add('active'));
+      currentQuote = index;
+    }
+
+    function nextQuote() {
+      const next = (currentQuote + 1) % quotes.length;
+      showQuote(next);
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        showQuote(parseInt(dot.dataset.index));
+      });
+    });
   </script>
 </body>
 </html>
