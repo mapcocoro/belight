@@ -381,10 +381,10 @@
       font-size: 0.875rem;
     }
 
-    /* Murmur (社長の独り言) - Twitter Style */
+    /* Murmur (社長の独り言) */
     .murmur {
       background: var(--bg-gray);
-      padding: 6rem 2rem;
+      padding: 5rem 2rem;
     }
 
     .murmur-inner {
@@ -399,21 +399,10 @@
 
     .tweet {
       background: var(--bg);
-      border: 1px solid #e1e8ed;
-      padding: 1rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
       transition: background 0.2s;
-    }
-
-    .tweet:first-child {
-      border-radius: 12px 12px 0 0;
-    }
-
-    .tweet:last-child {
-      border-radius: 0 0 12px 12px;
-    }
-
-    .tweet:not(:last-child) {
-      border-bottom: none;
     }
 
     .tweet:hover {
@@ -426,8 +415,8 @@
     }
 
     .tweet-avatar {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
       display: flex;
@@ -438,8 +427,8 @@
     }
 
     .tweet-avatar svg {
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
     }
 
     .tweet-content {
@@ -457,19 +446,65 @@
     .tweet-name {
       font-weight: 700;
       color: var(--text);
-      font-size: 0.9375rem;
+      font-size: 0.875rem;
     }
 
     .tweet-time {
       color: var(--text-light);
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
     }
 
     .tweet-text {
       color: var(--text);
       font-size: 0.9375rem;
-      line-height: 1.5;
+      line-height: 1.6;
       margin-top: 0.25rem;
+    }
+
+    .tweet-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .tweet-expand-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: none;
+      color: var(--text-light);
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .tweet-expand-btn:hover {
+      color: var(--primary);
+    }
+
+    .tweet-expand-btn svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.3s;
+    }
+
+    .tweet-expand-btn.expanded svg {
+      transform: rotate(180deg);
+    }
+
+    .tweet-more {
+      display: none;
+      margin-top: 0.75rem;
+    }
+
+    .tweet-more.show {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
     /* CEO Message Section */
@@ -1070,31 +1105,39 @@
               <p class="tweet-text">運搬物の軽量化は、輸送業界の働き方改革と環境貢献の一環として必須課題だと考えています。高齢者や女性など、力仕事にハンディのある方々の支えになる製品を作りたい。</p>
             </div>
           </div>
-        </article>
-        <article class="tweet">
-          <div class="tweet-header">
-            <div class="tweet-avatar"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg></div>
-            <div class="tweet-content">
-              <div class="tweet-meta">
-                <span class="tweet-name">代表者様</span>
-                <span class="tweet-time">1月10日</span>
-              </div>
-              <p class="tweet-text">機材の軽量化により、運転手の労働負担軽減と労働事故減少を実現できると確信しています。一人でも多くのドライバーさんの腰痛を減らしたい。</p>
-            </div>
+          <div class="tweet-footer">
+            <button class="tweet-expand-btn" onclick="toggleTweets(this)">
+              もっと見る
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
           </div>
         </article>
-        <article class="tweet">
-          <div class="tweet-header">
-            <div class="tweet-avatar"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg></div>
-            <div class="tweet-content">
-              <div class="tweet-meta">
-                <span class="tweet-name">代表者様</span>
-                <span class="tweet-time">1月5日</span>
+        <div class="tweet-more" id="tweetMore">
+          <article class="tweet">
+            <div class="tweet-header">
+              <div class="tweet-avatar"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg></div>
+              <div class="tweet-content">
+                <div class="tweet-meta">
+                  <span class="tweet-name">代表者様</span>
+                  <span class="tweet-time">1月10日</span>
+                </div>
+                <p class="tweet-text">機材の軽量化により、運転手の労働負担軽減と労働事故減少を実現できると確信しています。一人でも多くのドライバーさんの腰痛を減らしたい。</p>
               </div>
-              <p class="tweet-text">トラック・トレーラー輸送におけるCO2排出削減は永遠のテーマ。付帯機材の軽量化でこれに貢献していきます。</p>
             </div>
-          </div>
-        </article>
+          </article>
+          <article class="tweet">
+            <div class="tweet-header">
+              <div class="tweet-avatar"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M12 14c-6 0-8 3-8 6v1h16v-1c0-3-2-6-8-6z"/></svg></div>
+              <div class="tweet-content">
+                <div class="tweet-meta">
+                  <span class="tweet-name">代表者様</span>
+                  <span class="tweet-time">1月5日</span>
+                </div>
+                <p class="tweet-text">トラック・トレーラー輸送におけるCO2排出削減は永遠のテーマ。付帯機材の軽量化でこれに貢献していきます。</p>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -1255,6 +1298,20 @@
       document.querySelector('.hamburger').classList.toggle('active');
       document.querySelector('.mobile-menu').classList.toggle('active');
       document.body.style.overflow = document.querySelector('.mobile-menu').classList.contains('active') ? 'hidden' : '';
+    }
+
+    function toggleTweets(btn) {
+      const moreSection = document.getElementById('tweetMore');
+      const isExpanded = moreSection.classList.contains('show');
+      if (isExpanded) {
+        moreSection.classList.remove('show');
+        btn.classList.remove('expanded');
+        btn.innerHTML = 'もっと見る<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
+      } else {
+        moreSection.classList.add('show');
+        btn.classList.add('expanded');
+        btn.innerHTML = '閉じる<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
+      }
     }
   </script>
 </body>
